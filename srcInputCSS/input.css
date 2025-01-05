@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ----------global classes---------- */
+
+.hint {
+    @apply flex items-center text-[10px] mt-[10px] duration-200 relative;
+}
+
+.hint.empty {
+    @apply text-[#dd5454];
+}
+
+.hint > span {
+    @apply ml-[5px];
+    word-spacing: 3px;
+}
+
+.container form label {
+    @apply text-[14px] font-normal mb-[9px] capitalize;
+}
+
+.container form .field {
+    @apply flex flex-col mt-[20px];
+}
+
+.container form .field > input {
+    @apply focus:outline-none bg-colorFieldBack border-[2px] border-borderColor p-[10px] rounded-[10px];
+}
+
+/* ---------------------------------- */
+
+body {
+    @apply bg-[url('../images/background-mobile.png')] text-white
+    md:bg-[url("../images/background-tablet.png")]
+    lg:bg-[url("../images/background-desktop.png")];
+}
+
+body > img {
+    @apply absolute;
+}
+
+body > img:first-child {
+    @apply top-[60%] left-[60%];
+}
+
+body > img:nth-child(2) {
+    @apply top-[0] left-[0];
+}
+
+body > img:nth-child(3) {
+    @apply top-[116vh] w-[300px] sm:w-[760px] sm:top-[100vh];
+}
+
+body > img:nth-child(4) {
+    @apply right-0 sm:w-[449px] w-[270px];
+}
+
+body > img:nth-child(5) {
+    @apply left-0 top-[-25px] sm:w-[217px] w-[100px];
+}
+
+/* ---------- container rules ---------- */
+
+.container {
+    @apply max-w-[550px] mx-auto my-[50px] px-4 relative z-50;
+}
+
+.container .baseHeader {
+    @apply flex justify-center;
+}
+
+.container .baseHeader > img {
+    
+}
+
+.container .bigTitle {
+    @apply mt-[50px] mb-[25px] text-[30px] font-bold text-center capitalize tracking-[1px]
+    sm:text-[35px];
+}
+
+.container .secure {
+    @apply text-center mb-[25px] text-[15px] tracking-[1px] ;
+}
+
+/* ---------- form rules ---------- */
+
+.container form {
+    @apply max-w-[350px] mx-auto;
+}
+
+.container form .avatar {
+
+}
+
+.container form .avatar > label {
+
+}
+
+.container form .avatar .content {
+    @apply my-[10px] flex flex-col items-center justify-center 
+    min-h-[160px] rounded-[10px] border-2 border-dashed border-colorborder
+    bg-colorFieldBack p-[15px];
+}
+
+.container form .avatar .content input[type="file"] {
+    @apply hidden;
+}
+
+.container form .avatar .content > img {
+    @apply p-[5px] bg-colorImgBack rounded-[10px]
+    border border-solid cursor-pointer max-w-[100px];
+}
+
+.container form .avatar .content > .text {
+    @apply mt-[5px];
+}
+
+.container form .avatar .content > .text button {
+    @apply bg-colorImgBack text-[10px] p-[2px_5px] rounded-[4px];
+}
+
+.container form .avatar .content > .text button:first-child {
+    @apply underline;
+}
+
+/* ---------- name field rules ---------- */
+
+.container form .nameField .hint1 {
+    /* opacity: 0; */
+    display: none;
+}
+
+/* ---------- email field rules ---------- */
+
+.container form .emailField .hint2 {
+    /* opacity: 0; */
+    display: none;
+}
+
+/* ---------- github username field rules ---------- */
+
+.container form .githubField .hint3 {
+    /* opacity: 0; */
+    display: none;
+}
+
+/* ---------- submit button rules ---------- */
+
+.container form .submit {
+    @apply text-colorText text-center w-full p-[8px] bg-colorTextBack 
+    mt-[20px] rounded-[11px] text-[17px] font-medium capitalize cursor-pointer;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="output.css">
+    <title>Ticket Generator</title>
+</head>
+<body>
+    <!-- images for design -->
+    <img src="../images/pattern-circle.svg" alt="photo" loading="lazy">
+    <img src="../images/pattern-lines.svg" alt="photo" loading="lazy">
+    <img src="../images/pattern-squiggly-line-bottom.svg" alt="photo" loading="lazy">
+    <img src="../images/pattern-squiggly-line-top.svg" alt="photo" loading="lazy">
+    <img src="../images/pattern-circle.svg" alt="photo" loading="lazy">
+    <!-- container and our form -->
+    <div class="container">
+        <!-- first header -->
+        <div class="baseHeader">
+            <img src="../images/logo-full.svg" alt="photo" loading="lazy">
+        </div>
+        <!-- appeared tittle -->
+        <h1 class="bigTitle">your journey to coding conf 2025 starts here!</h1>
+        <p class="secure">Secure your spot at next year's biggest coding conference.</p>
+        <form action="">
+            <!-- add avatar and buttons -->
+            <div class="avatar">
+                <label for="image">uploud avatar</label>
+                <div class="content">
+                    <input type="file" name="image" id="image" accept=".png, .jpg">
+                    <img src="../images/icon-upload.svg" alt="photo" loading="lazy" class="upload">
+                    <span class="text">Drag and drop or click to upload</span>
+                </div>
+                <div class="hint0 hint">
+                    <img src="../images/icon-info.svg" alt="photo" loading="lazy">
+                    <span>
+                        upload your photo (JPG or PNG , max size : 500KB).
+                    </span>
+                </div>
+            </div>
+            <!-- add name field -->
+            <div class="nameField field">
+                <label for="name">full name</label>
+                <input type="text" name="name" id="name">
+                <div class="hint1 hint">
+                    <img src="../images/icon-info.svg" alt="photo" loading="lazy">
+                    <span>please enter ypur name</span>
+                </div>
+            </div>
+            <!-- add email field -->
+            <div class="emailField field">
+                <label for="email">email address</label>
+                <input type="email" name="email" id="email" placeholder="example@email.com">
+                <div class="hint2 hint">
+                    <img src="../images/icon-info.svg" alt="photo" loading="lazy">
+                    <span>please enter a valid email address</span>
+                </div>
+            </div>
+            <!-- add github username field -->
+            <div class="githubField field">
+                <label for="github">github username</label>
+                <input type="text" name="github" id="github" placeholder="@yourusername">
+                <div class="hint3 hint">
+                    <img src="../images/icon-info.svg" alt="photo" loading="lazy">
+                    <span>please enter your github username</span>
+                </div>
+            </div>
+            <!-- submit button to generate the ticket -->
+            <a href="ticket.html" target="_blank" class="moveTo"></a>
+            <button class="submit" type="button">generate my ticket</button>
+        </form>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
