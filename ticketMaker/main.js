@@ -9,13 +9,17 @@ let submit=document.querySelector(".submit");
 let inputs=document.querySelectorAll("input");
 let moveToOtherPage=document.querySelector(".moveTo");
 
-validMail=false;
+let validMail=false;
+let data=[];
+
 
 mailInpt.addEventListener("input",handleEmailInput);
 icon.addEventListener("click",uploadAvatar);
 submit.addEventListener("click",generateTicket);
 
 // -------------------- functions -------------------//
+
+localStorage.clear();
 
 function handleEmailInput (eve) {
     let mailReg=/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/igm;
@@ -54,6 +58,7 @@ function addPhotoToPage (eve) {
             <button type="button" onclick="deleteImage(event)">Remove image</button>
             <button type="button" onclick="changeImage(event)">Change image</button>
         </div>`;
+        data.push(e.target.result);
         hint0.style.opacity="0";
         uploadContent.classList.add("added");
     }
@@ -104,5 +109,13 @@ function generateTicket () {
         }
     });
 
-    if(askMove) moveToOtherPage.click();
+    if(askMove) {
+        inputs.forEach((inpt,i)=> {
+            if(i!==0) {
+                data.push(inpt.value);
+            }
+        });
+        localStorage.setItem("info",JSON.stringify(data));
+        moveToOtherPage.click();
+    }
 }
