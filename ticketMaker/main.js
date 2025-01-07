@@ -14,6 +14,7 @@ let data=[];
 
 
 mailInpt.addEventListener("input",handleEmailInput);
+// nameInpt.addEventListener("input",handleNameInput);
 icon.addEventListener("click",uploadAvatar);
 submit.addEventListener("click",generateTicket);
 
@@ -27,15 +28,29 @@ function handleEmailInput (eve) {
     let mHint=document.querySelector(".hint2");
     if(val.match(mailReg)) {
         mHint.style.display="none";
-        mHint.classList.toggle("empty");
+        mHint.classList.remove("empty");
         validMail=true;
     }
     else {
         mHint.style.display="flex";
-        mHint.classList.toggle("empty");
+        mHint.classList.add("empty");
         validMail=false;
     }
 }
+
+// function handleNameInput () {
+//     let reg=/^[a-z0-9_-]{3,16}$/igm;
+//     let val=nameInpt.value;
+//     let nHint=document.querySelector(".hint1");
+//     if(val.match(reg)) {
+//         nHint.style.display="none";
+//         nHint.classList.remove("empyt");
+//     }
+//     else {
+//         nHint.style.display="flex";
+//         nHint.classList.add("empyt");
+//     }
+// }
 
 //------------------------------------------------------
 
@@ -59,7 +74,7 @@ function addPhotoToPage (eve) {
             <button type="button" onclick="changeImage(event)">Change image</button>
         </div>`;
         data.push(e.target.result);
-        hint0.style.opacity="0";
+        hint0.style.display="none";
         uploadContent.classList.add("added");
     }
     reader.readAsDataURL(file);
@@ -93,18 +108,20 @@ function generateTicket () {
     let askMove=false;
     inputs.forEach((input,i)=> {
         let hint=document.querySelector(`.hint${i}`);
-        if(input.value==="") {
+        if(input.value=="") {
             hint.style.display="flex";
-            hint.classList.toggle("empty");
+            hint.classList.add("empty");
             askMove=false;
+            return;
         }
         else if (!validMail && i===2) {
             hint.style.display="flex";
-            hint.classList.toggle("empty");
+            hint.classList.add("empty");
             askMove=false;
         }
         else {
             hint.style.display="none";
+            hint.classList.remove("empty");
             askMove=true;
         }
     });

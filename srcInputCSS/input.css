@@ -154,3 +154,87 @@ body > img:nth-child(5) {
     @apply text-colorText text-center w-full p-[8px] bg-colorTextBack 
     mt-[20px] rounded-[11px] text-[17px] font-medium capitalize cursor-pointer;
 }
+
+/* --------------------ticket page---------------- */
+
+.container2 {
+    @apply max-w-[400px] mx-auto z-50 relative mt-[50px] text-center p-[15px];
+}
+
+.container2 > img {
+    @apply m-auto;
+}
+
+.container2 .helloP {
+    @apply text-[38px] font-semibold my-[25px]
+    tracking-[1px] leading-[1.3];
+}
+
+.container2 .helloP span.name {
+    @apply text-colorTextBack font-[40px];
+}
+
+.container2 > p {
+    @apply font-[13px] mt-[20px] mb-[60px];
+}
+
+.container2 > p span.email {
+    @apply text-colorTextBack;
+}
+
+/* ticket rules */
+
+.container2 .ticket {
+    @apply bg-[url('../images/pattern-ticket.svg')]
+    p-[15px] max-w-[350px] bg-contain bg-no-repeat mx-auto;
+}
+
+.container2 .ticket .text {
+    
+}
+
+.container2 .ticket .title {
+    @apply flex items-center;
+}
+
+.container2 .ticket .text .title img {
+    
+}
+
+.container2 .ticket .text .title p {
+    @apply text-[22px] font-semibold capitalize ml-[15px];
+}
+
+.container2 .ticket .text .date {
+    @apply text-left my-[5px] ml-[60px] text-[11px]
+    tracking-[1px] text-colorImgBack;
+}
+
+/* information rules */
+
+.container2 .ticket .info {
+    @apply flex items-center gap-[20px] mt-[20px];
+}
+
+.container2 .ticket .info img {
+    @apply max-w-[50px] rounded-[5px];
+}
+
+.container2 .ticket .info .info2 {
+
+}
+
+.container2 .ticket .info .info2 p:first-child {
+    @apply font-[18px];
+}
+
+.container2 .ticket .info .info2 p:last-child {
+    @apply flex items-center font-[12px];
+}
+
+.container2 .ticket .info .info2 p:last-child img {
+}
+
+.container2 .ticket .info .info2 p:last-child span.github {
+    @apply ml-[4px];
+}
