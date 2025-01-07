@@ -829,7 +829,7 @@ body > img:nth-child(5){
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
-  max-width: 400px;
+  max-width: 450px;
   padding: 15px;
   text-align: center;
 }
@@ -914,7 +914,8 @@ body > img:nth-child(5){
   gap: 20px;
 }
 
-.container2 .ticket .info img{
+.container2 .ticket .info > img{
+  max-height: 50px;
   max-width: 50px;
   border-radius: 5px;
 }

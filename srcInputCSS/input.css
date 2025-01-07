@@ -158,7 +158,7 @@ body > img:nth-child(5) {
 /* --------------------ticket page---------------- */
 
 .container2 {
-    @apply max-w-[400px] mx-auto z-50 relative mt-[50px] text-center p-[15px];
+    @apply max-w-[450px] mx-auto z-50 relative mt-[50px] text-center p-[15px];
 }
 
 .container2 > img {
@@ -216,8 +216,8 @@ body > img:nth-child(5) {
     @apply flex items-center gap-[20px] mt-[20px];
 }
 
-.container2 .ticket .info img {
-    @apply max-w-[50px] rounded-[5px];
+.container2 .ticket .info > img {
+    @apply max-w-[50px] rounded-[5px] max-h-[50px];
 }
 
 .container2 .ticket .info .info2 {
