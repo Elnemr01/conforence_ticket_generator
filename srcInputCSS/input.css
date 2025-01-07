@@ -186,11 +186,12 @@ body > img:nth-child(5) {
 
 .container2 .ticket {
     @apply bg-[url('../images/pattern-ticket.svg')]
-    p-[15px] max-w-[350px] bg-contain bg-no-repeat mx-auto;
+    p-[15px] max-w-[350px] bg-contain bg-no-repeat mx-auto relative;
 }
 
-.container2 .ticket .text {
-    
+.container2 .ticket .specialEle {
+    @apply absolute top-[50%] text-[18px] right-[9px] text-colorImgBack
+    transform translate-y-[-50%] rotate-90;
 }
 
 .container2 .ticket .title {

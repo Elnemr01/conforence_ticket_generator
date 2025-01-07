@@ -867,6 +867,7 @@ body > img:nth-child(5){
 /* ticket rules */
 
 .container2 .ticket{
+  position: relative;
   margin-left: auto;
   margin-right: auto;
   max-width: 350px;
@@ -876,7 +877,16 @@ body > img:nth-child(5){
   padding: 15px;
 }
 
-.container2 .ticket .text {
+.container2 .ticket .specialEle{
+  position: absolute;
+  top: 50%;
+  right: 9px;
+  --tw-translate-y: -50%;
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  font-size: 18px;
+  --tw-text-opacity: 1;
+  color: hsl(245 15% 58% / var(--tw-text-opacity, 1));
 }
 
 .container2 .ticket .title{
