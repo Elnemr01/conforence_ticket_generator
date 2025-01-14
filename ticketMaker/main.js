@@ -4,22 +4,25 @@ let githubInpt=document.querySelector("#github");
 let icon=document.querySelector(".upload");
 let fileInpt=document.querySelector("#image");
 let uploadContent=document.querySelector(".content");
-let hint0=document.querySelector(".hint1");
 let submit=document.querySelector(".submit");
-let inputs=document.querySelectorAll("input");
 let moveToOtherPage=document.querySelector(".moveTo");
 
-let validMail=false;
-let data=[];
+let src="";
+let flagObj={
+    photo: false,
+    name: false,
+    email: false,
+    github: false,
+}
 
 
 mailInpt.addEventListener("input",handleEmailInput);
-// nameInpt.addEventListener("input",handleNameInput);
+nameInpt.addEventListener("input",handleNameInput);
+githubInpt.addEventListener("input",handleGitHubInput);
 icon.addEventListener("click",uploadAvatar);
 submit.addEventListener("click",generateTicket);
 
 // -------------------- functions -------------------//
-
 localStorage.clear();
 
 function handleEmailInput (eve) {
@@ -29,41 +32,69 @@ function handleEmailInput (eve) {
     if(val.match(mailReg)) {
         mHint.style.display="none";
         mHint.classList.remove("empty");
-        validMail=true;
+        flagObj.email=true;
     }
     else {
         mHint.style.display="flex";
         mHint.classList.add("empty");
-        validMail=false;
+        flagObj.email=false;
     }
 }
 
-// function handleNameInput () {
-//     let reg=/^[a-z0-9_-]{3,16}$/igm;
-//     let val=nameInpt.value;
-//     let nHint=document.querySelector(".hint1");
-//     if(val.match(reg)) {
-//         nHint.style.display="none";
-//         nHint.classList.remove("empyt");
-//     }
-//     else {
-//         nHint.style.display="flex";
-//         nHint.classList.add("empyt");
-//     }
-// }
+//------------------------------------------------------
+
+function handleGitHubInput () {
+    let val=githubInpt.value;
+    let reg=/^[a-zA-Z0-9-]+$/igm;
+    let hint=document.querySelector(".hint3");
+
+    if(val.match(reg)) {
+        hint.style.display="none";
+        hint.classList.remove("empty");
+        flagObj.github=true;
+    }
+    else {
+        hint.style.display="flex";
+        hint.classList.add("empty");
+        flagObj.github=false;
+    }
+}
+
+//------------------------------------------------------
+
+function handleNameInput () {
+    let val=nameInpt.value,res="";
+    let hint=document.querySelector(".hint1");
+    for(let i=0;i<val.length;i++) {
+        if(val[i]!=" ")
+            res+=val[i];
+    }
+    if(res=="") {
+        hint.style.display="flex";
+        hint.classList.add("empty");
+        flagObj.name=false;
+    }
+    else {
+        hint.style.display="none";
+        hint.classList.remove("empty");
+        flagObj.name=true;
+    }
+
+}
 
 //------------------------------------------------------
 
 function uploadAvatar () {
     fileInpt.click();
     fileInpt.addEventListener("change",addPhotoToPage);
+    flagObj.photo=true;
 }
 
 //------------------------------------------------------
 
 function addPhotoToPage (eve) {
     let file = eve.target.files[0];
-    
+    let hint=document.querySelector(`.hint0`);
     const reader = new FileReader();
     reader.onload = function(e) {
         uploadContent.innerHTML=`
@@ -73,25 +104,27 @@ function addPhotoToPage (eve) {
             <button type="button" onclick="deleteImage(event)">Remove image</button>
             <button type="button" onclick="changeImage(event)">Change image</button>
         </div>`;
-        data.push(e.target.result);
-        hint0.style.display="none";
-        uploadContent.classList.add("added");
+        src=e.target.result;
+        hint.style.display="none";
     }
     reader.readAsDataURL(file);
+    // if(file.type!="image/jpeg" || file.type!="image/png") flagObj.photo=false;
 }
 
 //------------------------------------------------------
 
 function deleteImage (event) {
     fileInpt.value="";
+    let hint=document.querySelector(`.hint0`);
     uploadContent.innerHTML=`
     <input type="file" name="image" id="image" accept=".png, .jpg">
     <img src="../images/icon-upload.svg" alt="photo" loading="lazy" class="upload">
     <span class="text">Drag and drop or click to upload</span>`;
-    uploadContent.classList.toggle("added");
-    hint0.style.opacity="1";
+    hint.style.display="flex";
     icon=document.querySelector(".upload");
     icon.addEventListener("click",uploadAvatar);
+    src="";
+    flagObj.photo=false;
     event.preventDefault();
 }
 
@@ -105,34 +138,29 @@ function changeImage (event) {
 //------------------------------------------------------
 
 function generateTicket () {
-    let askMove=false;
+    let inputs=document.querySelectorAll("input");
+    let askMove=true;
     inputs.forEach((input,i)=> {
         let hint=document.querySelector(`.hint${i}`);
-        if(input.value=="") {
+        if(flagObj[input.getAttribute("data-flag")]==false) {
             hint.style.display="flex";
             hint.classList.add("empty");
             askMove=false;
-            return;
-        }
-        else if (!validMail && i===2) {
-            hint.style.display="flex";
-            hint.classList.add("empty");
-            askMove=false;
-        }
-        else {
-            hint.style.display="none";
-            hint.classList.remove("empty");
-            askMove=true;
         }
     });
 
     if(askMove) {
-        inputs.forEach((inpt,i)=> {
-            if(i!==0) {
-                data.push(inpt.value);
+        let data=[];
+        data.push(src);
+
+        inputs.forEach((input,i)=> {
+            if(i!=0) {
+                data.push(input.value);
             }
         });
         localStorage.setItem("info",JSON.stringify(data));
         moveToOtherPage.click();
     }
 }
+
+

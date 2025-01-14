@@ -1,5 +1,7 @@
 
+
 let myInfo=JSON.parse(localStorage.getItem("info"));
+console.log(myInfo)
 
 let spanName=document.querySelector("span.name");
 let pName=document.querySelector(".info2 p:first-child");

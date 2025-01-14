@@ -28,7 +28,7 @@
             <div class="avatar">
                 <label for="image">uploud avatar</label>
                 <div class="content">
-                    <input type="file" name="image" id="image" accept=".png, .jpg">
+                    <input type="file" name="image" id="image" accept=".png, .jpg" data-flag="photo">
                     <img src="../images/icon-upload.svg" alt="photo" loading="lazy" class="upload">
                     <span class="text">Drag and drop or click to upload</span>
                 </div>
@@ -42,7 +42,7 @@
             <!-- add name field -->
             <div class="nameField field">
                 <label for="name">full name</label>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="name" data-flag="name">
                 <div class="hint1 hint">
                     <img src="../images/icon-info.svg" alt="photo" loading="lazy">
                     <span>please enter your name</span>
@@ -51,7 +51,7 @@
             <!-- add email field -->
             <div class="emailField field">
                 <label for="email">email address</label>
-                <input type="email" name="email" id="email" placeholder="example@email.com">
+                <input type="email" name="email" id="email" placeholder="example@email.com" data-flag="email">
                 <div class="hint2 hint">
                     <img src="../images/icon-info.svg" alt="photo" loading="lazy">
                     <span>please enter a valid email address</span>
@@ -60,7 +60,7 @@
             <!-- add github username field -->
             <div class="githubField field">
                 <label for="github">github username</label>
-                <input type="text" name="github" id="github" placeholder="@yourusername">
+                <input type="text" name="github" id="github" placeholder="@yourusername" data-flag="github">
                 <div class="hint3 hint">
                     <img src="../images/icon-info.svg" alt="photo" loading="lazy">
                     <span>please enter your github username</span>
