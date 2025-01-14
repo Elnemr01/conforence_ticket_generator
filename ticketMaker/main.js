@@ -115,16 +115,16 @@ function addPhotoToPage (eve) {
 
 function deleteImage (event) {
     fileInpt.value="";
+    src="";
+    flagObj.photo=false;
     let hint=document.querySelector(`.hint0`);
     uploadContent.innerHTML=`
-    <input type="file" name="image" id="image" accept=".png, .jpg">
+    <input type="file" name="image" id="image" accept=".png, .jpg" data-flag="photo">
     <img src="../images/icon-upload.svg" alt="photo" loading="lazy" class="upload">
     <span class="text">Drag and drop or click to upload</span>`;
     hint.style.display="flex";
     icon=document.querySelector(".upload");
     icon.addEventListener("click",uploadAvatar);
-    src="";
-    flagObj.photo=false;
     event.preventDefault();
 }
 
@@ -142,7 +142,7 @@ function generateTicket () {
     let askMove=true;
     inputs.forEach((input,i)=> {
         let hint=document.querySelector(`.hint${i}`);
-        if(flagObj[input.getAttribute("data-flag")]==false) {
+        if(flagObj[input.getAttribute("data-flag")]===false) {
             hint.style.display="flex";
             hint.classList.add("empty");
             askMove=false;
